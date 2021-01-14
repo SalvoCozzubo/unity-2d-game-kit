@@ -11,7 +11,7 @@ public class DialogPopupChoiceItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        selectIcon.SetActive(false);
     }
 
     // Update is called once per frame

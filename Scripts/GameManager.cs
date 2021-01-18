@@ -7,6 +7,13 @@ public class GameManager : MonoBehaviour
     private bool gamePause = false;
 
     public static GameManager instance;
+
+    private bool menuShow = false;
+    [Header("References: Menu")]
+    [SerializeField]
+    private GameObject menuRef;
+    [SerializeField]
+    private GameObject dialogRef;
     void Awake()
     {
         instance = this;
@@ -20,7 +27,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (InputManager.instance.GetExitMenu())
+        {
+            ShowMenu();
+        }
     }
 
     public bool IsGamePause()
@@ -36,5 +46,22 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         gamePause = false;
+    }
+
+    public void ShowMenu()
+    {
+        menuShow = !menuShow;
+        if(menuShow)
+        {
+            Pause();
+        }
+        else {
+            Resume();
+        }
+
+        if (menuRef != null)
+        {
+            menuRef.SetActive(menuShow);
+        }
     }
 }

@@ -30,7 +30,7 @@ public class InputManager : MonoBehaviour
 
     public bool GetActionButton()
     {
-        return Input.GetButtonDown("Action");
+        return Input.GetButtonUp("Action");
     }
 
     public Direction GetDirection()
@@ -44,5 +44,10 @@ public class InputManager : MonoBehaviour
         else if (verticalAxis < 0) return Direction.DOWN;
 
         return Direction.NONE;
+    }
+
+    public bool GetExitMenu()
+    {
+        return Input.GetButtonUp("Cancel");
     }
 }
